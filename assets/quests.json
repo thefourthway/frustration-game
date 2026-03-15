@@ -1,0 +1,149 @@
+{
+    "quests": [
+        {
+            "id": "check_list",
+            "name": "Check the list on the fridge"
+        },
+        {
+            "id": "get_the_mail",
+            "name": "Check your mailbox",
+            "objectives": [
+                {"type": "interact", "target": "mailbox", "description": "Open the mailbox"},
+                {"type": "collect", "target": "mail", "description": "Pick up the mail"}
+            ],
+            "next": "open_the_mail"
+        },
+        {
+            "id": "open_the_mail",
+            "name": "Sort your mail",
+            "objectives": [
+                {"type": "location", "target": "kitchen", "description": "Go to your kitchen"},
+                {"type": "item", "target": "mail", "description": "Open your mail", "requires": [
+                    {"type": "location", "target": "kitchen"}
+                ]}
+            ],
+            "drops": [
+                {
+                    "dist_type": "one_of",
+                    "items": [  
+                        {"type": "bill", "probability": 40, "id": "bill_to_pay"},
+                        {"type": "spam_mail", "probability": 60, "id": "spam_to_trash"}
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "pay_the_bill_1",
+            "name": "Pay the late bill",
+            "objectives": [
+                {"type": "collect", "target": "cash", "description": "Grab your cash"},
+                {
+                    "type": "interact", "target": "bill_to_pay", "description": "Put the cash with the bill",
+                    "requires": [
+                        {"type": "held_item", "item": "cash"}
+                    ]
+                }
+            ],
+            "drops": [
+                {
+                    "dist_type": "all_of",
+                    "items": [
+                        {"type": "bill_envelope", "id": "bill_envelope"}
+                    ]
+                }
+            ],
+            "next": "pay_the_bill_2"
+        },
+        {
+            "id": "pay_the_bill_2",
+            "name": "Mail the paid bill",
+            "objectives": [
+                {
+                    "type": "interact", "target": "mailbox", "description": "Put the bill in the mailbox",
+                    "requires": [
+                        {"type": "held_item", "item": "bill_envelope"}
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "answer_the_phone",
+            "name": "Answer the phone!",
+            "objectives": [
+                {
+                    "type": "interact", "target": "phone", "description": "Answer the phone!!",
+                    "requires": [
+                        {"type": "wait_at", "location": "phone", "duration": 6.0}
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "make_ramen_1",
+            "name": "Make some ramen",
+            "objectives": [
+                {"type": "collect", "target": "pot", "description": "Get the pot"},
+                {"type": "interact", "target": "sink", "description": "Put water in the pot", "requires": [
+                    {"type": "held_item", "item": "pot"}
+                ]}
+            ],
+            "drops": [
+                {
+                    "dist_type": "all_of",
+                    "items": [
+                        {"type": "filled_pot", "id": "filled_pot"}
+                    ]
+                }
+            ],
+            "next": "make_ramen_2"
+        },
+        {
+            "id": "make_ramen_2",
+            "name": "Make some ramen",
+            "objectives": [
+                {
+                    "type": "interact", "target": "stove", "description": "Boil some water",
+                    "requires": [
+                        {"type": "held_item", "item": "full_pot"}
+                    ]
+                }
+            ],
+            "next": "make_ramen_3"
+        },
+        {
+            "id": "make_ramen_3",
+            "name": "Make some ramen",
+            "objectives": [
+                {"type": "collect", "target": "ramen", "description": "Grab the ramen"},
+                {"type": "deposit", "target": "full_pot", "description": "Cook the ramen"}
+            ],
+            "next": "make_ramen_4"
+        },
+        {
+            "id": "make_ramen_4",
+            "name": "Make some ramen",
+            "objectives": [
+                {
+                    "type": "wait", "duration": 8.0, "description": "Wait for the ramen to cook"
+                }
+            ],
+            "drops": [
+                {
+                    "dist_type": "all_of",
+                    "items": [
+                        {"type": "pot", "id": "pot"},
+                        {"type": "ramen_bowl", "id": "ramen_bowl"}
+                    ]
+                }
+            ],
+            "next": "make_ramen_5"
+        },
+        {
+            "id": "make_ramen_5",
+            "name": "Eat your ramen",
+            "objectives": [
+                {"type": "item", "target": "ramen_bowl", "description": "Eat your ramen"}
+            ]
+        }
+    ]
+}

@@ -35,3 +35,5 @@ CPMAddPackage(
         "CATCH_INSTALL_EXTRAS OFF"
         "CATCH_BUILD_TESTING OFF"
 )
+
+CPMAddPackage("gh:stephenberry/glaze#v7.2.0")

@@ -6,6 +6,8 @@ set(
     include/gamelib/ecs/ecs.hpp
     include/gamelib/ecs/entity.hpp
     include/gamelib/ecs/world.hpp
+    include/gamelib/events.h
+    include/gamelib/quests.h
 )
 
 set(
@@ -20,4 +22,5 @@ target_link_libraries(
     INTERFACE
     absl::flat_hash_map
     absl::flat_hash_set
+    glaze::glaze
 )

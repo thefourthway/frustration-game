@@ -1,0 +1,52 @@
+{
+    "events": [
+        {
+            "id": "get_the_mail",
+            "message": "Better check the mail.",
+            "times": {
+                "low": [8, 30],
+                "high": [10, 15]
+            },
+            "triggers": "get_the_mail"
+        },
+        {
+            "id": "pay_the_bill",
+            "message": "Better pay that bill.",
+            "requires": [
+                ["object_exists", "bill_to_pay"]
+            ],
+            "times": {
+                "low": [10, 30],
+                "high": [18, 0]
+            },
+            "triggers": "pay_the_bill_1"
+        },
+        {
+            "id": "phone_rings",
+            "message": "The phone is ringing...",
+            "times": {
+                "low": [9, 15],
+                "high": [13, 15]
+            },
+            "triggers": "answer_the_phone"
+        },
+        {
+            "id": "im_hungry",
+            "message": "Hmm, I'm getting pretty hungry",
+            "times": {
+                "low": [10, 15],
+                "high": [16, 30]
+            },
+            "triggers": "make_ramen_1"
+        },
+        {
+            "id": "shower",
+            "message": "Shit, I forgot to shower today",
+            "times": {
+                "low": [9, 0],
+                "high": [17, 30]
+            },
+            "triggers": "take_a_shower"
+        }
+    ]
+}
